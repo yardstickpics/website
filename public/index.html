@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Image Test Suite</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {padding: 1em}
+</style>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<body>
+<main class="container">
+    <header class="jumbotron header">
+        <h1>Image Test Suite</h1>
+        <p class="lead">A project to create a freely shareable set of images that represents the state of images on the Web and can be used for compression techniques research and benchmarking.</p>
+    </header>
+    <h2>The problem</h2>
+
+    <p>Currently available sets, like the Kodak test suite, are small and not representative of images used today. Copyright and lossy compression limit usefulness of images scraped from the Web. To improve image codecs we need improved test images:</p>
+    <ul>
+    <li><strong>Diverse set representing all common use-cases</strong> — from transparent icons to multi-megapixel photos.
+    <li><strong>Large number of images</strong> — for statistically significant results.
+    <li><strong>Images using alpha channel</strong> — there's very little research in compression of image transparency.
+    <li><strong>Images in their &ldquo;original&rdquo; form</strong> — compression artifacts may bias benchmarks.
+    </ul>
+
+    <h2>The plan</h2>
+
+    <ol><li>
+    <p>The first step is to get a large collection of freely licensed, raw quality images. We should look for (the list is not final):
+
+    <ul>
+    <li>photos from high-end digital cameras,
+    <li>photos from cellphone cameras,
+    <li>photos taken in low light (noisy),
+    <li>edited photos (especially with transparency),
+    <li>icons, logos, buttons,
+    <li>screenshots from various OSes,
+    <li><abbr>CGI</abbr> images and screenshots from games,
+    <li>assets from games and interactive infographics.
+    </ul>
+
+    <li><p>Collect statistics about &ldquo;typical&rdquo; images on the Web — sizes, types, amount of noise, contrast, edges, etc.
+    <li><p>Select (or edit) images to be statistically similar to the set of the images found on the Web.
+    </ol>
+
+    <h2>Example use-cases</h2>
+
+    <ul>
+    <li>Evaluation of proposed alpha channel support in <abbr>JPEG XT</abbr>.
+    <li>Tuning of lossy <abbr>PNG</abbr> compressors.
+    <li>Solid benchmark comparing WebP, <abbr>JPEG XR</abbr>, <abbr>JPEG</abbr> 2000 and various lossy <abbr>PNG</abbr> solutions.
+    <li>Test ideas for improvements of the mozjpeg encoder (e.g. algorithms for noise shaping and activity masking)
+    <li>Design/evaluate/tune algorithms that can quickly guess whether <abbr>PNG</abbr> or <abbr>JPEG</abbr> will be better for any given image, and what type of chroma subsampling is appropriate.
+    </ul>
+
+    <p>In the long term we hope the test suite could:</p>
+    <ul>
+    <li> become a de-facto standard for fair benchmarks of image compression algorithms/products,
+    <li> aid research and development of image compression algorithms,
+    <li> help browser performance tuning,
+    <li> help <abbr>R&amp;D</abbr> of other image-related algorithms (enhancing filters, tracing, hashing/similarity, visual quality assessment metrics, etc.),
+    <li> get reused in other fields (e.g. computer vision).
+    </ul>
+
+    <h2>Get involved</h2>
+    <p><a href="https://github.com/yardstickpics">Issue tracker</a>. Contact: <a class="><nope" href=
+    "&#109;ailto:&#x6b;ornel%40geekhood.n%65t">Kornel Lesiński</a>, <a href="https://twitter.com/yoavweiss">Yoav Weiss</a>, <a href="https://twitter.com/arobson">Ann Robson</a>, <a href="https://twitter.com/guypod">Guy Podjarny</a>.</p>
+</main>

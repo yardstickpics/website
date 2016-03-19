@@ -1,0 +1,14 @@
+{
+  "name": "yardstick",
+  "version": "1.0.0",
+  "description": "Yardstick picture benchmark website",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "GPLv3",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
