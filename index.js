@@ -1,5 +1,12 @@
 'use strict';
 
+const dev = 'development' === process.env.NODE_ENV;
+
+if (!dev) {
+    process.setgid('www-data');
+    process.setuid('www-data');
+}
+
 const express = require('express');
 const compress = require('compression');
 const nunjucks = require('nunjucks');
@@ -11,7 +18,6 @@ const writeFile = denodeify(fs.writeFile);
 const upload = multer({ dest: 'uploads/' });
 
 const morgan = require('morgan');
-
 
 const licenses = [
     Object.freeze({key:"CC0", label:"CC0: Creative Commons Zero (recommended)", href:"https://creativecommons.org/publicdomain/zero/1.0/"}),
@@ -28,7 +34,7 @@ app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
 nunjucks.configure('views', {
     autoescape: true,
     express: app,
-    noCache: 'development' === process.env.NODE_ENV,
+    noCache: dev,
 });
 
 app.get('/thanks', (req, res) => {
