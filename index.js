@@ -22,6 +22,7 @@ const morgan = require('morgan');
 const licenses = [
     Object.freeze({key:"CC0", label:"CC0: Creative Commons Zero (recommended)", href:"https://creativecommons.org/publicdomain/zero/1.0/"}),
     Object.freeze({key:"Public Domain", label:"Public Domain", href:"https://wiki.creativecommons.org/wiki/Public_domain"}),
+    Object.freeze({key:"CC BY 3.0", label:"CC BY: Creative Commons Attribution", href:"https://creativecommons.org/licenses/by/3.0/"}),
     Object.freeze({key:"CC BY-SA 3.0", label:"CC BY-SA: Creative Commons Attribution-ShareAlike", href:"https://creativecommons.org/licenses/by-sa/3.0/"}),
 ];
 
