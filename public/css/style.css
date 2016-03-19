@@ -1,0 +1,80 @@
+html {
+    font: 0.95em/1.4 Helvetica, Arial, sans-serif;
+}
+body {
+    padding: 1em;
+    background: url(/yardstick.svg) no-repeat 50% 1.4em;
+}
+@media screen and (max-width: 1800px) {
+    body {
+        background-size: 1800px;
+    }
+}
+main {
+    max-width: 50em;
+    margin: 1em auto;
+}
+#logo {
+    width: 100%; margin: 0 0 1em;
+}
+h1 {
+    margin: 0;
+    line-height: 1;
+    font-size: 4em;
+    text-shadow: 1px 2px 0 #ffe;
+    font-family: "consolas", monospace, sans-serif;
+    letter-spacing: -0.1ex;
+}
+
+
+@media screen and (max-width: 400px) {
+    body {
+        padding: 0.5em;
+    }
+    h1 {
+        font-size: 3em;
+    }
+    ol, ul {
+        margin-left: 0;
+        padding-left: 1.5em;
+    }
+}
+
+h2,h3  {
+    font-weight: normal;
+}
+.hsub {
+    color: #800;
+    font-size: 2em;
+    margin: 0;
+}
+
+header p {
+    margin-bottom: 0
+}
+header {
+    background: #ffa;
+    background: linear-gradient(rgba(255,255,200,0.7), #ffa);
+    padding: 1.5em;
+    border-radius: 0.5em;
+}
+
+.cta {
+    margin: 2em;
+    text-align: center;
+}
+.cta a {
+    display: inline-block;
+    padding: 1em 1.5em;
+    border-radius: 0.5em;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+    background: #494;
+    background: linear-gradient(#4a4, #383);
+    color: white;
+    font-weight: bold;
+}
+.cta a:hover {
+    background: #4a4;
+    background: linear-gradient(#4b4, #484);
+}

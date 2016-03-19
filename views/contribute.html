@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Contribute to Yardstick pictures</title>
+<link rel=stylesheet href=/css/normalize.css>
+<link rel=stylesheet href=/css/style.css>
+<style>
+
+label, form {
+    display: block;
+    font:  message-box;
+}
+label {
+    margin-bottom: 0.25em;
+}
+p.desc {
+    margin-top: 2em;
+}
+textarea {
+    max-width: 100%;
+}
+p.error {
+    background: #fee;
+    color: #600;
+    padding: 1.5em;
+    margin: 2em 0;
+    border: 1px dashed red;
+    animation: fade 1s forwards;
+}
+@keyframes fade {
+    0%, 20% {
+        background: red;
+        color: yellow;
+    }
+    100%, 10% {
+        background: #fee;
+        color: #600;
+    }
+}
+</style>
+<body>
+<main>
+    <header>
+        <h1>Yardstick</h1>
+        <p class="hsub">Image Test Suite</p>
+    </header>
+    {% if error %}
+    <p class="error"><strong>{{error}}</strong></p>
+    {% else %}
+    <h2>Contribute your images to the test suite</h2>
+    <p>It's important for the test suite to be <strong>publicly available to everyone</strong>, so we only accept images under free licenses. Please only submit images that you own copyright to (e.g. photos you've taken by yourself, and which don't belong to your employer), or images that have been distributed under a free license already.</p>
+    {% endif %}
+    <form method=post enctype=multipart/form-data>
+        <p><label for="email">Your e-mail (optional, will not be published)</label>
+            <input id=email name=email type=email value="{{post.email}}">
+        </p>
+        <p>
+            <label><input onchange="update()" name=source value="upload" {% if not post.urls %}checked{% endif %} type=radio> Share images from your computer</label>
+            <label><input onchange="update()" name=source value="url" {% if post.urls %}checked{% endif %} type=radio> Specify URLs where the images are hosted</label>
+        </p>
+        <p id="fileinput">
+            <label for=image>Image files <small>(you can select multiple — if your Internet connection can upload that much)</small></label>
+            <input id=image name="image" type=file multiple>
+        </p>
+        <p id="urlinput">
+            <label for=urls >URLs where images are hosted (one per line)</label>
+            <textarea if=urls name="urls" rows=3 cols=60>{{post.urls}}</textarea>
+        </p>
+        <p class="desc"><label>Description, keywords or attribution (if any required) (optional)
+            </label>
+            <textarea name="description" rows=2 cols=60>{{post.description}}</textarea>
+        </p>
+        <p><label for=license>License of the images</label>
+            <select id=license name=license onchange="update()" required>
+                <option value="">Please select</option>
+                {% for license in licenses %}
+                <option href="{{license.href}}" value="{{license.key}}" {% if license.selected %}selected{% endif %}>{{license.label}}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p><label><input {% if post.agree %}checked{% endif %} name=agree type=checkbox required> I license these images under <a target=_blank id="licenseoutput">the license selected above</a> and have right to do so</label></p>
+        <p><input type=submit value="Contribute the images"></p>
+    </form>
+    <p>We process submissions manually. If you've entered your e-mail address we'll let you know when the images are inlcluded.</p>
+<script>
+function update() {
+    var fileinput = document.getElementById('fileinput');
+    var urlinput = document.getElementById('urlinput');
+    var licenseoutput = document.getElementById('licenseoutput');
+
+    var f = document.forms[0];
+    fileinput.style.display = (f.elements.source.value === 'url') ? 'none' : '';
+    urlinput.style.display = (f.elements.source.value === 'url') ? '' : 'none';
+
+
+    if (f.elements.license.selectedIndex) {
+        var sel = f.elements.license.options[f.elements.license.selectedIndex];
+        licenseoutput.textContent = 'the ' + sel.value + ' license';
+        licenseoutput.href = sel.getAttribute('href');
+    }
+}
+update();
+
+</script>
