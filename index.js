@@ -55,16 +55,18 @@ app.post('/contribute', upload.any(), (req, res, next) => {
             return reject(error);
         }
 
+        const created = Date.now();
         const submission = JSON.stringify({
+            created,
             post,
             files,
             headers: req.headers,
             ips: req.ips,
         }, undefined, 1);
 
-        const filename = crypto.createHash('sha1').update(submission).digest('hex');
+        const fileName = `${created}-${crypto.createHash('sha1').update(submission).digest('hex')}`;
 
-        writeFile(`uploads/submissions/${filename}.json`, submission)
+        writeFile(`uploads/submissions/${fileName}.json`, submission)
             .then(resolve, reject);
     })
     .then(() => {
