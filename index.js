@@ -42,6 +42,10 @@ app.get('/thanks', (req, res) => {
     res.render('thanks.html');
 });
 
+app.get('/sets', (req, res) => {
+    res.render('sets.html');
+});
+
 app.post('/contribute', upload.any(), (req, res, next) => {
     const post = req.body;
     const files = req.files;
