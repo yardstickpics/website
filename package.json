@@ -1,5 +1,5 @@
 {
-  "name": "yardstick",
+  "name": "yardstick-website",
   "version": "1.0.0",
   "description": "Yardstick picture benchmark website",
   "main": "index.js",
