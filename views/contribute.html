@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>Contribute to Yardstick pictures</title>
-<link rel=stylesheet href=/css/normalize.css>
-<link rel=stylesheet href=/css/style.css>
+{% extends "_page.html" %}
+{% block title %}Contribute to Yardstick pictures{% endblock %}
+{% block head %}
 <style>
-
 label, form {
     display: block;
     font:  message-box;
@@ -39,16 +34,13 @@ p.error {
     }
 }
 </style>
-<body>
-<main>
-    <header>
-        <h1>Yardstick</h1>
-        <p class="hsub">Image Test Suite</p>
-    </header>
+{% endblock %}
+{% block subheader %}Contribute your images to the test suite
+{% endblock %}
+{% block body %}
     {% if error %}
     <p class="error"><strong>{{error}}</strong></p>
     {% else %}
-    <h2>Contribute your images to the test suite</h2>
     <p>It's important for the test suite to be <strong>publicly available to everyone</strong>, so we only accept images under free licenses. Please only submit images that you own copyright to (e.g. photos you've taken by yourself, and which don't belong to your employer), or images that have been distributed under a free license already.</p>
     {% endif %}
     <form method=post enctype=multipart/form-data>
@@ -103,3 +95,4 @@ function update() {
 update();
 
 </script>
+{% endblock %}

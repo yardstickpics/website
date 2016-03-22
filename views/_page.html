@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel=stylesheet href=/css/normalize.css>
+<link rel=stylesheet href=/css/style.css>
+<title>{% block title %}{% endblock %}</title>
+{% block head %}{% endblock %}
+<body>
+<main>
+    <header>
+        {% block header %}
+            <h1><a href=/>Yardstick</a></h1>
+            <h2>{% block subheader %}Image Test Suite{% endblock %}</h2>
+        {% endblock %}
+    </header>
+{% block body %}
+{% endblock %}
