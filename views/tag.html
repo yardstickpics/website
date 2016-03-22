@@ -1,0 +1,13 @@
+{% extends "_page.html" %}
+{% block title %}{{tag.name}}{% endblock %}
+{% block subheader %}
+    <a href=/tags>Images by tag</a>: {{tag.name}}
+{% endblock %}
+{% block body %}
+<p>{{tag.images.length}} images tagged '{{tag.name}}'</p>
+<ul>
+{% for img in tag.images %}
+<li><a href="/image/{{img.sha1|truncate(6,true,'')|urlencode}}">{{img.sha1}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

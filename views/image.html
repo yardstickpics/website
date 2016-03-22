@@ -1,0 +1,22 @@
+{% extends "_page.html" %}
+{% block title %}Yardstick test image — {{image.name|default(image.sha1)}}{% endblock %}
+{% block subheader %}
+{{image.name|default('Untitled image')}}
+{% endblock %}
+{% block body %}
+<p><a href="{{image.url}}">{{image.url}}</a></p>
+
+<table>
+<tr><th>File SHA-1<td>{{image.sha1}}
+<tr><th>License<td>{{image.lic}}
+<tr><th>Added<td>on {{image.created_string}}
+<tr><th>From<td>{{image.src}}
+</table>
+<h2><a href=/tags>Tags</a></h2>
+<ul>
+{% for tag in image.tags %}
+<li><a href="/tags/{{tag}}">{{tag}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
+

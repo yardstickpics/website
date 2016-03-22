@@ -26,6 +26,9 @@ const licenses = [
     Object.freeze({key:"CC BY-SA 3.0", label:"CC BY-SA: Creative Commons Attribution-ShareAlike", href:"https://creativecommons.org/licenses/by-sa/3.0/"}),
 ];
 
+const Browser = require('./src/browser');
+const browser = new Browser('images.db');
+
 const app = express();
 
 app.use(compress());
@@ -40,6 +43,31 @@ nunjucks.configure('views', {
 
 app.get('/thanks', (req, res) => {
     res.render('thanks.html');
+});
+
+app.get('/image/', (req, res) => {
+    res.redirect('/tags');
+});
+
+app.get('/image/:sha1', (req, res, next) => {
+    browser.getImage(req.params.sha1).then(image => {
+        res.render('image.html', {image});
+    })
+    .catch(next);
+});
+
+app.get('/tags', (req, res, next) => {
+    browser.getAllTags().then(tags => {
+        res.render('tags.html', {tags});
+    })
+    .catch(next);
+});
+
+app.get('/tags/:tag', (req, res, next) => {
+    browser.getTag(req.params.tag).then(tag => {
+        res.render('tag.html', {tag});
+    })
+    .catch(next);
 });
 
 app.get('/sets', (req, res) => {

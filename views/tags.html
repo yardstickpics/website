@@ -1,0 +1,41 @@
+{% extends "_page.html" %}
+{% block title %}All tags{% endblock %}
+{% block subheader %}
+    Most common tags
+{% endblock %}
+{% block head %}
+<style>
+#tags {
+    list-style: none;
+    display:flex;
+    flex-flow: wrap;
+    margin: 1em 0;
+    justify-content: space-between;
+}
+#tags > li {
+    margin: 0;
+    padding: 0;
+}
+#tags > li > a > span {
+    font-size: 0.5em;
+    vertical-align: 15%;
+}
+#tags > li > a {
+    padding: 0.5em;
+    display: block;
+    text-decoration: none;
+}
+#tags > li > a:hover {
+    color: #900;
+    text-decoration: underline;
+    background: #eee;
+}
+</style>
+{% endblock %}
+{% block body %}
+<ul id=tags>
+{% for tag in tags %}
+<li><a href="/tags/{{tag.name|urlencode}}">{{tag.name}}<span> &times; {{tag.num}}</span></a></li>
+{% endfor %}
+</ul>
+{% endblock %}
