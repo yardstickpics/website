@@ -5,6 +5,18 @@
 {% endblock %}
 {% block body %}
 <p><a href="{{image.url}}">{{image.url}}</a></p>
+{% if image.desc.text %}
+<p>{{image.desc.text}}</p>
+{% endif %}
+{% if image.desc.html %}
+{{image.desc.html| safe}}
+{% endif %}
+{% if image.lic != 'pd' and image.wiki.Artist %}
+{{image.wiki.Artist| safe}}
+{% endif %}
+{% if image.desc.url %}
+<p><a href="{{image.desc.url}}">Description</a></p>
+{% endif %}
 
 <table>
 <tr><th>File SHA-1<td>{{image.sha1}}
