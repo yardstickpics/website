@@ -1,45 +1,68 @@
 html {
-    font: 0.95em/1.4 Helvetica, Arial, sans-serif;
+    font: 0.98em/1.5 Georgia, serif;
+    font-family: Lora, Georgia, serif;
+    background: #fff;
+    color: #333;
+    background: #ddd;
 }
 body {
-    padding: 1em;
-    background: url(/yardstick.svg) no-repeat 50% 1.4em;
+    margin: 0;
+    padding: 0;
 }
 @media screen and (max-width: 1800px) {
     body {
         background-size: 1800px;
     }
 }
+
 main {
-    max-width: 50em;
-    margin: 1em auto;
+    background: #fff;
+    max-width: 52em;
+    margin: 0 auto;
+    padding: 0 3em 1.5em;
+    min-height: 100vh;
+    border-bottom: 1em solid #aaa;
+    box-sizing: border-box;
 }
-#logo {
-    width: 100%; margin: 0 0 1em;
-}
+
 h1 a, h2 a {
     color: inherit;
     text-decoration: none;
 }
 h1 a:hover, h1 a:focus, h2 a:hover, h2 a:focus {
     text-decoration: underline;
+    text-decoration-color: #a44;
 }
 h1 {
-    margin: 0;
+    color: #000;
+    margin: 0 0 0 -0.3ex;
     line-height: 1;
     font-size: 4em;
-    text-shadow: 1px 2px 0 #ffe;
-    font-family: "consolas", monospace, sans-serif;
-    letter-spacing: -0.1ex;
+    font-family: "times new roman", serif;
+    letter-spacing: -0.08ex;
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 1000px) {
     body {
-        padding: 0.5em;
+        padding: 0 5%;
     }
-    h1 {
-        font-size: 3em;
+}
+@media screen and (max-width: 600px) {
+    body {
+        padding: 0
+    }
+    main {
+        padding: 0 2em;
+    }
+}
+@media screen and (max-width: 400px) {
+    main {
+        padding: 0 1em;
+        margin: 0;
+    }
+    header {
+        font-size: 0.8em;
     }
     ol, ul {
         margin-left: 0;
@@ -48,24 +71,24 @@ h1 {
 }
 
 h2,h3  {
+    color: #000;
     font-weight: normal;
+    font-style: italic;
 }
 .hsub, header h2 {
     color: #800;
     font-size: 2em;
     margin: 0;
 }
-
 header p {
     margin-bottom: 0
 }
 header {
-    background: #ffa;
-    background: linear-gradient(rgba(255,255,200,0.7), #ffa);
-    padding: 1.5em;
-    border-radius: 0.5em;
+    border-bottom: 1px dashed #000;
+    padding: 1.75em 0 0.5em;
+    margin: 0 0 2em;
 }
-
+header .lead {color: #777;}
 .cta {
     margin: 2em;
     text-align: center;
@@ -80,6 +103,7 @@ header {
     background: linear-gradient(#4a4, #383);
     color: white;
     font-weight: bold;
+    font-family: "Roboto slab", "Lucida Grande", "Candara", "trebuchet ms", "Droid serif", Georgia, serif;
 }
 .cta a:hover {
     background: #4a4;

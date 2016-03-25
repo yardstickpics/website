@@ -5,10 +5,14 @@
 <title>Yardstick pictures: Image Test Suite</title>
 <link rel=stylesheet href=/css/normalize.css>
 <link rel=stylesheet href=/css/style.css>
+<style>
+.weneed li {margin-bottom: 0.25em}
+.downloads {-moz-column-width: 20em; /* moz-only, because Blink renders that badly */}
+</style>
 <body>
 <main>
     <header>
-        <h1>Yardstick</h1>
+        <h1>Yard<wbr>stick</h1>
         <p class="hsub">Image Test Suite</p>
         <p class="lead">A freely shareable collection of images for image compression research and benchmarking.</p>
     </header>
@@ -16,7 +20,7 @@
 
     <p>Image compression research requires uncompressed (lossless) images for testing and benchmarking. However,&nbsp;the <a href="/sets">currently available sets</a> are generally small, old and not representative of images used on today. An&nbsp;image test suite can't be simply built by scraping images from the Web because of copyright restrictions and lossy compression used.</p>
     <p>We need:</p>
-    <ul>
+    <ul class=weneed>
     <li><strong>Images in their &ldquo;original&rdquo; form</strong> — JPEG compression artifacts bias benchmarks.
     <li><strong>Diverse set representing all common use-cases</strong> — from transparent icons to multi-megapixel photos.
     <li><strong>Images using alpha channel</strong> — there's very little research in compression of image transparency.
@@ -66,7 +70,7 @@
 
     <section id=download>
     <h2>Early release</h2>
-    <ul>
+    <ul class=downloads>
         <li><a href="https://github.com/yardstickpics/metadata">List of all images</a> gathered so far</li>
         <li><a href="/yardstick-images-1.tar.xz">Images batch 1</a> 3.1GB (BMP, TIFF, SVG)</li>
         <li><a href="/yardstick-images-2.tar.gz">Images batch 2</a> 830MB (PNG, JPEG)</li>
