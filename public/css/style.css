@@ -14,7 +14,6 @@ body {
         background-size: 1800px;
     }
 }
-
 main {
     background: #fff;
     max-width: 52em;
@@ -108,4 +107,13 @@ header .lead {color: #777;}
 .cta a:hover {
     background: #4a4;
     background: linear-gradient(#4b4, #484);
+}
+
+pre, code {
+    font-family: consolas, monospace, serif;
+}
+pre {
+    white-space: pre-wrap;
+    padding: 1em;
+    background: #f8f8f8;
 }
