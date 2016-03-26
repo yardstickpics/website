@@ -51,7 +51,11 @@ td.metric a {text-transform: uppercase; text-decoration: none}
 {% if image.desc.url %}
 <p><a href="{{image.desc.url}}">Description</a></p>
 {% endif %}
-<p><a href="{{source_url}}">Source data</a>. <a href="{{download_url}}">Raw image download</a>.</p>
+<p><a href="{{source_url}}">Source data</a>.
+{% if download_url %}
+<a href="{{download_url}}">Raw image download</a>.
+{% endif %}
+</p>
 
 {% if image.tags %}
 <h2><a href=/tags>Tags</a></h2>
