@@ -117,3 +117,37 @@ pre {
     padding: 1em;
     background: #f8f8f8;
 }
+hr {
+    height: 0;
+    border: 0;
+    border-top: 1px dashed black;
+    margin: 2em 0 1em;
+}
+
+#tags {
+    list-style: none;
+    display:flex;
+    flex-flow: wrap;
+    padding: 0;
+    margin: 1em 0;
+    justify-content: space-between;
+}
+#tags > li {
+    margin: 0;
+    padding: 0;
+}
+#tags > li > a > span {
+    font-size: 0.5em;
+    vertical-align: 15%;
+    color: #aaa;
+}
+#tags > li > a {
+    padding: 0.5em;
+    display: block;
+    text-decoration: none;
+}
+#tags > li > a:hover {
+    color: #900;
+    text-decoration: underline;
+    background: #eee;
+}

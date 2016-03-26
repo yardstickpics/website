@@ -1,0 +1,25 @@
+{% extends "_page.html" %}
+{% block title %}Image sources for the Yardstick test suite{% endblock %}
+{% block subheader %}
+Image sources
+{% endblock %}
+{% block head %}
+<style>
+h2 {margin: 1.5em 0 0;}
+h2 + p {margin: .5em 0;}
+h2 a {color: #00c;}
+h2 a:visited {color: #708;}
+section:target {
+    border-left: 4px solid #600; padding-left: 1em;
+}
+</style>
+{% endblock %}
+{% block body %}
+{% for s in sources %}
+<section id="{{s.id}}">
+<h2><a href="{{s.source.desc.url}}">{{s.source.title}}</a></h2>
+<p>{{s.source.desc.text}}</p>
+</section>
+{% endfor %}
+{% endblock %}
+

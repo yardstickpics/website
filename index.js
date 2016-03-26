@@ -19,12 +19,15 @@ const upload = multer({ dest: 'uploads/' });
 
 const morgan = require('morgan');
 
-const licenses = [
+const licenseOptions = [
     Object.freeze({key:"CC0", label:"CC0: Creative Commons Zero (recommended)", href:"https://creativecommons.org/publicdomain/zero/1.0/"}),
     Object.freeze({key:"Public Domain", label:"Public Domain", href:"https://wiki.creativecommons.org/wiki/Public_domain"}),
     Object.freeze({key:"CC BY 3.0", label:"CC BY: Creative Commons Attribution", href:"https://creativecommons.org/licenses/by/3.0/"}),
     Object.freeze({key:"CC BY-SA 3.0", label:"CC BY-SA: Creative Commons Attribution-ShareAlike", href:"https://creativecommons.org/licenses/by-sa/3.0/"}),
 ];
+
+const sources = require('./metadata/sources.json').sources;
+const licenseNames = require('./licenses.json');
 
 const Browser = require('./src/browser');
 const browser = new Browser('images.db');
@@ -51,9 +54,19 @@ app.get('/image/', (req, res) => {
 
 app.get('/image/:sha1', (req, res, next) => {
     browser.getImage(req.params.sha1).then(image => {
-        res.render('image.html', {image});
+        res.render('image.html', {
+            image,
+            source: sources[image.from],
+            license: licenseNames[image.lic],
+            source_url: `https://github.com/yardstickpics/metadata/blob/master/${image.sha1.substr(0,2)}/${image.sha1.substr(2)}.json`,
+            download_url: `/downloads/${image.sha1.substr(0,2)}/${image.sha1.substr(2)}.${image.ext}`,
+        });
     })
     .catch(next);
+});
+
+app.get('/sources', (req, res, next) => {
+    res.render('sources.html', {sources: Object.keys(sources).map(id => ({id, source:sources[id]}))});
 });
 
 app.get('/tags', (req, res, next) => {
@@ -126,14 +139,14 @@ app.post('/contribute', upload.any(), (req, res, next) => {
         res.render('contribute.html', {
             error,
             post,
-            licenses: licenses.map(l => l.key === post.license ? Object.assign({}, l, {selected:true}) : l),
+            licenses: licenseOptions.map(l => l.key === post.license ? Object.assign({}, l, {selected:true}) : l),
         });
     })
     .catch(next);
 });
 
 app.get('/contribute', (req, res) => {
-    res.render('contribute.html', {licenses, post:{}});
+    res.render('contribute.html', {licenses: licenseOptions, post:{}});
 });
 
 app.use(express.static('public'));

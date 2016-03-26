@@ -3,8 +3,15 @@
 {% block subheader %}
 {{image.name|default('Untitled image')}}
 {% endblock %}
+{% block head %}
+<style>
+p.url a, h2 {display:block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+th {text-align: right; padding-right: 1ex}
+td {font-family: Helvetica, Arial, sans-serif;}
+</style>
+{% endblock %}
 {% block body %}
-<p><a href="{{image.url}}">{{image.url}}</a></p>
+<p class="url"><a href="{{image.url}}">{{image.url}}</a></p>
 {% if image.desc.text %}
 <p>{{image.desc.text}}</p>
 {% endif %}
@@ -14,21 +21,39 @@
 {% if image.lic != 'pd' and image.wiki.Artist %}
 {{image.wiki.Artist| safe}}
 {% endif %}
+
+<table>
+<tr><th>File size<td>{{image.size}}
+<tr><th>Dimensions<td>{{image.width}}×{{image.height}}
+<tr><th>License<td>
+{% if license %}
+    <a href="{{license.url}}">{{license.name}}</a>
+{% else %}
+    {{image.lic}}
+{% endif %}
+
+<tr><th>From<td>
+{% if source %}
+    <a href="/sources#{{image.from|urlencode}}">{{source.title}}</a>
+{% else %}
+    {{image.from}}
+{% endif %}
+<tr><th>Added<td>on {{image.created_string}}
+<tr><th>File SHA-1<td>{{image.sha1}}
+</table>
+
 {% if image.desc.url %}
 <p><a href="{{image.desc.url}}">Description</a></p>
 {% endif %}
+<p><a href="{{source_url}}">Source data</a>. <a href="{{download_url}}">Raw image download</a>.</p>
 
-<table>
-<tr><th>File SHA-1<td>{{image.sha1}}
-<tr><th>License<td>{{image.lic}}
-<tr><th>Added<td>on {{image.created_string}}
-<tr><th>From<td>{{image.src}}
-</table>
+{% if image.tags %}
 <h2><a href=/tags>Tags</a></h2>
-<ul>
+<ul id=tags>
 {% for tag in image.tags %}
-<li><a href="/tags/{{tag}}">{{tag}}</a></li>
+<li><a href="/tags/{{tag|urlencode}}">{{tag}}</a></li>
 {% endfor %}
 </ul>
+{% endif %}
 {% endblock %}
 
