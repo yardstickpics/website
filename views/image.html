@@ -1,5 +1,5 @@
 {% extends "_page.html" %}
-{% block title %}Yardstick test image — {{image.name|default(image.sha1)}}{% endblock %}
+{% block title %}Yardstick: {{image.name|default(image.sha1)}}{% endblock %}
 {% block subheader %}
 {{image.name|default('Untitled image')}}
 {% endblock %}
@@ -45,7 +45,7 @@ td.metric a {text-transform: uppercase; text-decoration: none}
     {{image.from}}
 {% endif %}
 <tr><th>Added<td>on {{image.created_string}}
-<tr><th>File SHA-1<td>{{image.sha1}}
+<tr><th>File SHA-1<td class=sha1>{{image.sha1}}
 </table>
 
 {% if image.desc.url %}

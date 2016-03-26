@@ -130,6 +130,8 @@ hr {
     flex-flow: wrap;
     padding: 0;
     margin: 1em 0;
+}
+#tags.many {
     justify-content: space-between;
 }
 #tags > li {
@@ -153,3 +155,4 @@ hr {
 }
 table {font: inherit;}
 th,td {vertical-align: top}
+.sha1 {font-family: consolas, monospace, serif; font-size: .8em; vertical-align: bottom;}

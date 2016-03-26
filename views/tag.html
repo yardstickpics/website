@@ -1,13 +1,18 @@
 {% extends "_page.html" %}
-{% block title %}{{tag.name}}{% endblock %}
+{% block title %}{{tag.name|capitalize}} — Yardstick pictures by tag{% endblock %}
 {% block subheader %}
     <a href=/tags>Images by tag</a>: {{tag.name}}
+{% endblock %}
+{% block head %}
+<style>
+
+</style>
 {% endblock %}
 {% block body %}
 <p>{{tag.images.length}} images tagged '{{tag.name}}'</p>
 <ul>
 {% for img in tag.images %}
-<li><a href="/image/{{img.sha1|truncate(6,true,'')|urlencode}}">{{img.sha1}}</a></li>
+<li><a class=sha1 href="/image/{{img.sha1|truncate(6,true,'')|urlencode}}">{{img.sha1}}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

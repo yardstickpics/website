@@ -1,10 +1,10 @@
 {% extends "_page.html" %}
-{% block title %}All tags{% endblock %}
+{% block title %}All tags — Yardstick pictures{% endblock %}
 {% block subheader %}
     Most common tags
 {% endblock %}
 {% block body %}
-<ul id=tags>
+<ul id=tags class=many>
 {% for tag in tags %}
 <li><a href="/tags/{{tag.name|urlencode}}">{{tag.name}}<span> &times; {{tag.num}}</span></a></li>
 {% endfor %}
