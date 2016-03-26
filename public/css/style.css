@@ -151,3 +151,5 @@ hr {
     text-decoration: underline;
     background: #eee;
 }
+table {font: inherit;}
+th,td {vertical-align: top}

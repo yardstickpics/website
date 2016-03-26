@@ -6,8 +6,14 @@
 {% block head %}
 <style>
 p.url a, h2 {display:block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-th {text-align: right; padding-right: 1ex}
-td {font-family: Helvetica, Arial, sans-serif;}
+th {text-align: right; padding-right: 1ex; padding-bottom: 0.25ex}
+thead th {text-align: left; font-weight: normal;}
+thead th:first-child, td.metric {text-align: right}
+.analyses tbody > tr > th,td {padding-right:1ex;font-family: Helvetica, Arial, sans-serif;}
+th small {font-weight: normal; display: block;}
+td.details, td.metric {font-size: 0.9em; font-family: georgia, serif}
+td.metric a {text-transform: uppercase; text-decoration: none}
+
 </style>
 {% endblock %}
 {% block body %}
@@ -55,5 +61,17 @@ td {font-family: Helvetica, Arial, sans-serif;}
 {% endfor %}
 </ul>
 {% endif %}
+
+{% if metrics %}
+<h2>Analyses</h2>
+<table class=analyses>
+<thead><tr><th>Analysis</th><th>File size</th><th>Metric</th><th>Value</th><th>Details</th></tr></thead>
+{% for m in metrics %}
+<tr><th>{{m.analysis.name}}
+</th><td>{{m.size}}</td><td class="metric" title="{{m.version}}"><a href="{{m.url}}">{{m.name}}</a></td><td>{{m.value}}</td><td class=details>{{m.analysis.version}}</td></tr>
+{% endfor %}
+</table>
+{% endif %}
+
 {% endblock %}
 

@@ -54,4 +54,19 @@ Browser.prototype.getImage = function(sha1) {
         }));
 };
 
+Browser.prototype.getMetrics = function(sha1) {
+    return this.db.then(db => pget(db, `SELECT im.size, im.value, m.*, a.json
+        FROM analyses a
+        JOIN image_metrics im ON a.id = im.analysis_id
+        JOIN metrics m ON m.id = metric_id
+        WHERE image_id = (SELECT id FROM images WHERE sha1 = ?)
+        ORDER BY size, value`, [sha1]))
+    .then(rows => {
+        rows.forEach(row => {
+            row.analysis = JSON.parse(row.json);
+        });
+        return rows;
+    });
+};
+
 module.exports = Browser;
