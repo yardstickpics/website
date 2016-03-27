@@ -54,7 +54,7 @@ app.get('/image/', (req, res) => {
 
 app.get('/image/:sha1', (req, res, next) => {
     browser.getImage(req.params.sha1).then(image => {
-        browser.getMetrics(image.sha1).then(metrics => {
+        return browser.getMetrics(image.sha1).then(metrics => {
             const download_url = `/downloads/${image.sha1.substr(0,2)}/${image.sha1.substr(2)}.${image.ext}`;
 
             res.render('image.html', {
