@@ -37,7 +37,7 @@ Browser.prototype.getTag = function(tag) {
         this.byTagCache.set(tag, this.db.then(db => pget(db, `SELECT sha1,width,height,size,lic FROM images i
             JOIN image_tags it ON it.image_id = i.id
             JOIN tags t ON it.tag_id = t.id
-            WHERE t.name = ? ORDER BY coalesce(width*height, size)`, [tag]).then(images => {
+            WHERE t.name = ? ORDER BY coalesce(width*height, size, 99999999)`, [tag]).then(images => {
                 return {name:tag, images};
             })));
     }
