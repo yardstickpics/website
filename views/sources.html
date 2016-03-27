@@ -18,7 +18,7 @@ section:target {
 {% for s in sources %}
 <section id="{{s.id}}">
 <h2><a href="{{s.source.desc.url}}">{{s.source.title}}</a></h2>
-<p>{{s.source.desc.text}}</p>
+<p class=plaintext>{{s.source.desc.text}}</p>
 </section>
 {% endfor %}
 {% endblock %}

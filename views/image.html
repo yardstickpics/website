@@ -13,13 +13,12 @@ thead th:first-child, td.metric {text-align: right}
 th small {font-weight: normal; display: block;}
 td.details, td.metric {font-size: 0.9em; font-family: georgia, serif}
 td.metric a {text-transform: uppercase; text-decoration: none}
-
 </style>
 {% endblock %}
 {% block body %}
 <p class="url"><a href="{{image.url}}">{{image.url}}</a></p>
 {% if image.desc.text %}
-<p>{{image.desc.text}}</p>
+<p class="plaintext">{{image.desc.text}}</p>
 {% endif %}
 {% if image.desc.html %}
 {{image.desc.html| safe}}

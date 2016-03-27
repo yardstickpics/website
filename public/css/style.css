@@ -156,3 +156,4 @@ hr {
 table {font: inherit;}
 th,td {vertical-align: top}
 .sha1 {font-family: consolas, monospace, serif; font-size: .8em; vertical-align: bottom;}
+.plaintext {white-space: pre-line}
