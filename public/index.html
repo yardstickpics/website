@@ -16,19 +16,18 @@
         <p class="hsub">Image Test Suite</p>
         <p class="lead">A freely shareable collection of images for image compression research and benchmarking.</p>
     </header>
-    <h2>The problem</h2>
-
-    <p>Image compression research requires uncompressed (lossless) images for testing and benchmarking. However,&nbsp;the <a href="/sets">currently available sets</a> are generally small, old and not representative of images used on today. An&nbsp;image test suite can't be simply built by scraping images from the Web because of copyright restrictions and lossy compression used.</p>
-    <p>We need:</p>
+    <p>We're building a large, modern collection of images for compression research. We need:</p>
     <ul class=weneed>
-    <li><strong>Images in their &ldquo;original&rdquo; form</strong> — JPEG compression artifacts bias benchmarks.
+    <li><strong>Images in their &ldquo;original&rdquo; form</strong> — without JPEG compression artifacts that bias benchmarks.
     <li><strong>Diverse set representing all common use-cases</strong> — from transparent icons to multi-megapixel photos.
     <li><strong>Images using alpha channel</strong> — there's very little research in compression of image transparency.
     <li><strong>Large number of images</strong> — for statistically significant results.
     </ul>
 
     <div class=cta><a href="/contribute">Contribute your images to the test suite</a></div>
+    <h2>The problem</h2>
 
+    <p>Image compression research requires a large number of uncompressed (lossless) images for testing and benchmarking. Unfortunately, for most researches the options are to either use a few "traditional" images (such as Lena or the Kodak set) or scrape the Web. Both options are problematic, because either the set is too small and unrepresentative, or the images already have compression artefacts and due to copyright restrictions can't be shared with others to let them verify the results.</p>
     <h2>The plan</h2>
 
     <ol><li>

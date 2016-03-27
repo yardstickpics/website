@@ -94,7 +94,7 @@ app.get('/tags/:tag', (req, res, next) => {
 });
 
 app.get('/sets', (req, res) => {
-    res.render('sets.html');
+    res.redirect('/sources');
 });
 
 app.post('/contribute', upload.any(), (req, res, next) => {
