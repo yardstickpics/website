@@ -27,7 +27,7 @@ const licenseOptions = [
 ];
 
 const sources = require('./metadata/sources.json').sources;
-const licenseNames = require('./licenses.json');
+const licenseNames = require('./metadata/licenses.json');
 
 const Browser = require('./src/browser');
 const browser = new Browser('images.db');
