@@ -57,6 +57,11 @@ app.get('/image/:sha1', (req, res, next) => {
         return browser.getMetrics(image.sha1).then(metrics => {
             const download_url = `/downloads/${image.sha1.substr(0,2)}/${image.sha1.substr(2)}.${image.ext}`;
 
+            if (image.from == 'pixabay' && image.desc && image.desc.url) {
+                image.url = image.desc.url;
+                delete image.desc.url;
+            }
+
             res.render('image.html', {
                 image,
                 metrics,

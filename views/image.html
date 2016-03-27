@@ -16,7 +16,7 @@ td.metric a {text-transform: uppercase; text-decoration: none}
 </style>
 {% endblock %}
 {% block body %}
-<p class="url"><a href="{{image.url}}">{{image.url}}</a></p>
+<p class="url"><a rel="nofollow" href="{{image.url}}">{{image.url}}</a></p>
 {% if image.desc.text %}
 <p class="plaintext">{{image.desc.text}}</p>
 {% endif %}
