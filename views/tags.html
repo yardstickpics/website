@@ -4,9 +4,16 @@
     Most common tags
 {% endblock %}
 {% block body %}
-<ul id=tags class=many>
-{% for tag in tags %}
-<li><a href="/tags/{{tag.name|urlencode}}">{{tag.name}}<span> &times; {{tag.num}}</span></a></li>
+<h2>Image properties</h2>
+<ul class="tags">
+{% for tag in img_tags %}
+<li><a href="/tags/{{tag.name|urlencode}}">{{tag.name}}<span> × {{tag.num}}</span></a></li>
+{% endfor %}
+</ul>
+<h2>Image content</h2>
+<ul class="tags many">
+{% for tag in content_tags %}
+<li><a href="/tags/{{tag.name|urlencode}}">{{tag.name}}<span> × {{tag.num}}</span></a></li>
 {% endfor %}
 </ul>
 {% endblock %}

@@ -76,7 +76,12 @@ app.get('/sources', (req, res, next) => {
 
 app.get('/tags', (req, res, next) => {
     browser.getAllTags().then(tags => {
-        res.render('tags.html', {tags});
+        const img_tags = [];
+        const content_tags = [];
+        tags.forEach(t => {
+            if (/^img:/.test(t.name)) img_tags.push(t); else content_tags.push(t);
+        });
+        res.render('tags.html', {img_tags, content_tags});
     })
     .catch(next);
 });

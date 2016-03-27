@@ -29,8 +29,12 @@ td.metric a {text-transform: uppercase; text-decoration: none}
 {% endif %}
 
 <table>
+{% if image.size %}
 <tr><th>File size<td>{{image.size}}
+{% endif %}
+{% if image.width %}
 <tr><th>Dimensions<td>{{image.width}}×{{image.height}}
+{% endif %}
 <tr><th>License<td>
 {% if license %}
     <a href="{{license.url}}">{{license.name}}</a>
@@ -57,16 +61,16 @@ td.metric a {text-transform: uppercase; text-decoration: none}
 {% endif %}
 </p>
 
-{% if image.tags %}
+{% if image.tags and image.tags.length %}
 <h2><a href=/tags>Tags</a></h2>
-<ul id=tags>
+<ul class=tags>
 {% for tag in image.tags %}
-<li><a href="/tags/{{tag|urlencode}}">{{tag}}</a></li>
+<li><a rel="tag" href="/tags/{{tag|urlencode}}">{{tag}}</a></li>
 {% endfor %}
 </ul>
 {% endif %}
 
-{% if metrics %}
+{% if metrics.length %}
 <h2>Analyses</h2>
 <table class=analyses>
 <thead><tr><th>Analysis</th><th>File size</th><th>Metric</th><th>Value</th><th>Details</th></tr></thead>

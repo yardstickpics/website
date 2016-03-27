@@ -5,14 +5,31 @@
 {% endblock %}
 {% block head %}
 <style>
-
+td {padding-right: 1ex;}
+td.size, td.width, td.height {font-family: helvetica, arial, sans-serif; text-align: right; font-size: 0.9em; vertical-align: bottom;}
+td.width {padding-right: 0}
+td.height {text-align: left}
 </style>
 {% endblock %}
 {% block body %}
 <p>{{tag.images.length}} images tagged '{{tag.name}}'</p>
-<ul>
+<table>
 {% for img in tag.images %}
-<li><a class=sha1 href="/image/{{img.sha1|truncate(6,true,'')|urlencode}}">{{img.sha1}}</a></li>
+<tr><td>
+<a class=sha1 href="/image/{{img.sha1|truncate(6,true,'')|urlencode}}">{{img.sha1|truncate(20,true,'…')}}</a>
+<td class=size>
+{{img.size}}
+<td class=width>
+{{img.width}}
+<td class=height>
+{% if img.height %}
+×{{img.height}}
+{% endif %}
+<td>
+{% if img.lic != 'pd' and img.lic != 'cc0' %}
+{{img.lic}}
+{% endif %}
+</tr>
 {% endfor %}
-</ul>
+</table>
 {% endblock %}

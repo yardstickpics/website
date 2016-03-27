@@ -34,10 +34,10 @@ Browser.prototype.getAllTags = function() {
 
 Browser.prototype.getTag = function(tag) {
     if (!this.byTagCache.has(tag)) {
-        this.byTagCache.set(tag, this.db.then(db => pget(db, `SELECT sha1 FROM images i
+        this.byTagCache.set(tag, this.db.then(db => pget(db, `SELECT sha1,width,height,size,lic FROM images i
             JOIN image_tags it ON it.image_id = i.id
             JOIN tags t ON it.tag_id = t.id
-            WHERE t.name = ?`, [tag]).then(images => {
+            WHERE t.name = ? ORDER BY coalesce(width*height, size)`, [tag]).then(images => {
                 return {name:tag, images};
             })));
     }
