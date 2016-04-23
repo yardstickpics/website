@@ -7,7 +7,8 @@
 <link rel=stylesheet href=/css/style.css>
 <style>
 .weneed li {margin-bottom: 0.25em}
-.downloads {-moz-column-width: 20em; /* moz-only, because Blink renders that badly */}
+.downloads {display: flex; flex-wrap: wrap; margin: 1em 0; padding: 0}
+.downloads li {list-style: none; margin: 0.5em; padding: 0;}
 </style>
 <body>
 <main>
@@ -72,28 +73,57 @@
     <h2>Early release</h2>
     <p>Apart from the first archive, the images are randomly distributed, so you can download any one of the archives to get a sample. You can avoid temporary files by streaming the archives, e.g.:</p>
     <pre><code>curl -s https://yardstick.pictures/yardstick-images-2.tar.gz | tar xvz</code></pre>
+    <p><a href="https://github.com/yardstickpics/metadata#readme">List of all images</a> gathered so far</p>
     <ul class=downloads>
-        <li><a href="https://github.com/yardstickpics/metadata#readme">List of all images</a> gathered so far</li>
-        <li><a href="/yardstick-images-1.tar.xz">Images batch 1</a> 3.1GB (BMP, TIFF, SVG)</li>
-        <li><a href="/yardstick-images-2.tar.gz">Images batch 2</a> 830MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-3.tar.gz">Images batch 3</a> 830MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-4.tar.gz">Images batch 4</a> 720MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-5.tar.gz">Images batch 5</a> 740MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-6.tar.gz">Images batch 6</a> 879MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-7.tar.gz">Images batch 7</a> 790MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-8.tar.gz">Images batch 8</a> 720MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-9.tar.gz">Images batch 9</a> 670MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-10.tar.gz">Images batch 10</a> 1.1GB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-11.tar.gz">Images batch 11</a> 940MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-12.tar.gz">Images batch 12</a> 920MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-13.tar.gz">Images batch 13</a> 1.2GB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-14.tar.gz">Images batch 14</a> 1.1GB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-15.tar.gz">Images batch 15</a> 980MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-16.tar.gz">Images batch 16</a> 600MB (PNG, JPEG)</li>
-        <li><a href="/yardstick-images-17.tar.gz">Images batch 17</a> 100MB (PNG)</li>
-        <li><a href="/yardstick-images-18.tar.gz">Images batch 18</a> 200MB (PNG)</li>
-        <li><a href="/yardstick-images-19.tar.gz">Images batch 19</a> 400MB (PNG)</li>
-        <li><a href="/yardstick-images-20.tar.gz">Images batch 20</a> 800MB (PNG)</li>
+        <li><a href="/yardstick-images-1.tar.xz">Batch 1</a></li>
+        <li><a href="/yardstick-images-2.tar.gz">Batch 2</a></li>
+        <li><a href="/yardstick-images-3.tar.gz">Batch 3</a></li>
+        <li><a href="/yardstick-images-4.tar.gz">Batch 4</a></li>
+        <li><a href="/yardstick-images-5.tar.gz">Batch 5</a></li>
+        <li><a href="/yardstick-images-6.tar.gz">Batch 6</a></li>
+        <li><a href="/yardstick-images-7.tar.gz">Batch 7</a></li>
+        <li><a href="/yardstick-images-8.tar.gz">Batch 8</a></li>
+        <li><a href="/yardstick-images-9.tar.gz">Batch 9</a></li>
+        <li><a href="/yardstick-images-10.tar.gz">Batch 10</a></li>
+        <li><a href="/yardstick-images-11.tar.gz">Batch 11</a></li>
+        <li><a href="/yardstick-images-12.tar.gz">Batch 12</a></li>
+        <li><a href="/yardstick-images-13.tar.gz">Batch 13</a></li>
+        <li><a href="/yardstick-images-14.tar.gz">Batch 14</a></li>
+        <li><a href="/yardstick-images-15.tar.gz">Batch 15</a></li>
+        <li><a href="/yardstick-images-16.tar.gz">Batch 16</a></li>
+        <li><a href="/yardstick-images-17.tar.gz">Batch 17</a></li>
+        <li><a href="/yardstick-images-18.tar.gz">Batch 18</a></li>
+        <li><a href="/yardstick-images-19.tar.gz">Batch 19</a></li>
+        <li><a href="/yardstick-images-20.tar.gz">Batch 20</a></li>
+        <li><a href="/yardstick-images-21.tar.gz">Batch 21</a></li>
+        <li><a href="/yardstick-images-22.tar.gz">Batch 22</a></li>
+        <li><a href="/yardstick-images-23.tar.gz">Batch 23</a></li>
+        <li><a href="/yardstick-images-24.tar.gz">Batch 24</a></li>
+        <li><a href="/yardstick-images-25.tar.gz">Batch 25</a></li>
+        <li><a href="/yardstick-images-26.tar.gz">Batch 26</a></li>
+        <li><a href="/yardstick-images-27.tar.gz">Batch 27</a></li>
+        <li><a href="/yardstick-images-28.tar.gz">Batch 28</a></li>
+        <li><a href="/yardstick-images-29.tar.gz">Batch 29</a></li>
+        <li><a href="/yardstick-images-30.tar.gz">Batch 39</a></li>
+        <li><a href="/yardstick-images-31.tar.gz">Batch 31</a></li>
+        <li><a href="/yardstick-images-32.tar.gz">Batch 32</a></li>
+        <li><a href="/yardstick-images-33.tar.gz">Batch 33</a></li>
+        <li><a href="/yardstick-images-34.tar.gz">Batch 34</a></li>
+        <li><a href="/yardstick-images-35.tar.gz">Batch 35</a></li>
+        <li><a href="/yardstick-images-36.tar.gz">Batch 36</a></li>
+        <li><a href="/yardstick-images-37.tar.gz">Batch 37</a></li>
+        <li><a href="/yardstick-images-38.tar.gz">Batch 38</a></li>
+        <li><a href="/yardstick-images-39.tar.gz">Batch 39</a></li>
+        <li><a href="/yardstick-images-40.tar.gz">Batch 49</a></li>
+        <li><a href="/yardstick-images-41.tar.gz">Batch 41</a></li>
+        <li><a href="/yardstick-images-42.tar.gz">Batch 42</a></li>
+        <li><a href="/yardstick-images-43.tar.gz">Batch 43</a></li>
+        <li><a href="/yardstick-images-44.tar.gz">Batch 44</a></li>
+        <li><a href="/yardstick-images-45.tar.gz">Batch 45</a></li>
+        <li><a href="/yardstick-images-46.tar.gz">Batch 46</a></li>
+        <li><a href="/yardstick-images-47.tar.gz">Batch 47</a></li>
+        <li><a href="/yardstick-images-48.tar.gz">Batch 48</a></li>
+        <li><a href="/yardstick-images-49.tar.gz">Batch 49</a></li>
     </ul>
     <p>In the future we'll be providing individual image URLs. <a href="/tags">Browse images on the website</a>.</p>
     </section>
