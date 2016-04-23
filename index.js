@@ -54,20 +54,21 @@ app.get('/image/', (req, res) => {
 
 app.get('/image/:sha1', (req, res, next) => {
     browser.getImage(req.params.sha1).then(image => {
-        return browser.getMetrics(image.sha1).then(metrics => {
-            const download_url = `/downloads/${image.sha1.substr(0,2)}/${image.sha1.substr(2)}.${image.ext}`;
+        const data = image.data;
+        return browser.getMetrics(data.sha1).then(metrics => {
+            const download_url = `/${image.sourcePath()}`;
 
-            if (image.from == 'pixabay' && image.desc && image.desc.url) {
-                image.url = image.desc.url;
-                delete image.desc.url;
+            if (data.from == 'pixabay' && data.desc && data.desc.url) {
+                data.url = data.desc.url;
+                delete data.desc.url;
             }
 
             res.render('image.html', {
                 image,
                 metrics,
-                source: sources[image.from],
-                license: licenseNames[image.lic],
-                source_url: `https://github.com/yardstickpics/metadata/blob/master/${image.sha1.substr(0,2)}/${image.sha1.substr(2)}.json`,
+                source: sources[data.from],
+                license: licenseNames[data.lic],
+                source_url: `https://github.com/yardstickpics/metadata/blob/master/${data.sha1.substr(0,2)}/${data.sha1.substr(2)}.json`,
                 download_url: fs.existsSync(`public/${download_url}`) ? download_url : false,
             });
         });

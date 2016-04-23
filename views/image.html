@@ -1,7 +1,7 @@
 {% extends "_page.html" %}
-{% block title %}Yardstick: {{image.name|default(image.sha1)}}{% endblock %}
+{% block title %}Yardstick: {{image.data.name|default(image.data.sha1)}}{% endblock %}
 {% block subheader %}
-{{image.name|default('Untitled image')}}
+{{image.data.name|default('Untitled image')}}
 {% endblock %}
 {% block head %}
 <style>
@@ -16,43 +16,42 @@ td.metric a {text-transform: uppercase; text-decoration: none}
 </style>
 {% endblock %}
 {% block body %}
-<p class="url"><a rel="nofollow" href="{{image.url}}">{{image.url}}</a></p>
-{% if image.desc.text %}
-<p class="plaintext">{{image.desc.text}}</p>
+<p class="url"><a rel="nofollow" href="{{image.data.url}}">{{image.data.url}}</a></p>
+{% if image.data.desc.text %}
+<p class="plaintext">{{image.data.desc.text}}</p>
 {% endif %}
-{% if image.desc.html %}
-{{image.desc.html| safe}}
+{% if image.data.desc.html %}
+{{image.data.desc.html| safe}}
 {% endif %}
-{% if image.lic != 'pd' and image.wiki.Artist %}
-{{image.wiki.Artist| safe}}
+{% if image.data.lic != 'pd' and image.data.wiki.Artist %}
+{{image.data.wiki.Artist| safe}}
 {% endif %}
 
 <table>
-{% if image.size %}
-<tr><th>File size<td>{{image.size}}
+{% if image.data.size %}
+<tr><th>File size<td>{{image.data.size}}
 {% endif %}
-{% if image.width %}
-<tr><th>Dimensions<td>{{image.width}}×{{image.height}}
+{% if image.data.width %}
+<tr><th>Dimensions<td>{{image.data.width}}×{{image.data.height}}
 {% endif %}
 <tr><th>License<td>
 {% if license %}
     <a href="{{license.url}}">{{license.name}}</a>
 {% else %}
-    {{image.lic}}
+    {{image.data.lic}}
 {% endif %}
 
 <tr><th>From<td>
 {% if source %}
-    <a href="/sources#{{image.from|urlencode}}">{{source.title}}</a>
+    <a href="/sources#{{image.data.from|urlencode}}">{{source.title}}</a>
 {% else %}
-    {{image.from}}
+    {{image.data.from}}
 {% endif %}
-<tr><th>Added<td>on {{image.created_string}}
-<tr><th>File SHA-1<td class=sha1>{{image.sha1}}
+<tr><th>File SHA-1<td class=sha1>{{image.data.sha1}}
 </table>
 
-{% if image.desc.url %}
-<p><a href="{{image.desc.url}}">Description</a></p>
+{% if image.data.desc.url %}
+<p><a href="{{image.data.desc.url}}">Description</a></p>
 {% endif %}
 <p><a href="{{source_url}}">Source data</a>.
 {% if download_url %}
@@ -60,10 +59,10 @@ td.metric a {text-transform: uppercase; text-decoration: none}
 {% endif %}
 </p>
 
-{% if image.tags and image.tags.length %}
+{% if image.data.tags and image.data.tags.length %}
 <h2><a href=/tags>Tags</a></h2>
 <ul class=tags>
-{% for tag in image.tags %}
+{% for tag in image.data.tags %}
 <li><a rel="tag" href="/tags/{{tag|urlencode}}">{{tag}}</a></li>
 {% endfor %}
 </ul>

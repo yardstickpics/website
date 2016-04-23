@@ -1,6 +1,7 @@
 'use strict';
 
 const sqlite = require('sqlite3');
+const yr = require('yr');
 
 function pget(db, query, args) {
     if (!args) args = [];
@@ -48,9 +49,7 @@ Browser.prototype.getImage = function(sha1) {
     return this.db.then(db => pget(db, `SELECT * FROM images i
         WHERE i.sha1 >= ? ORDER BY sha1 ASC LIMIT 1`, [sha1]).then(images => {
             if (!images.length) throw Error("Not found");
-            const img = Object.assign(images[0], JSON.parse(images[0].json));
-            img.created_string = new Date(img.created*1000).toISOString();
-            return img;
+            return new yr.Image(Object.assign(images[0], JSON.parse(images[0].json)));
         }));
 };
 

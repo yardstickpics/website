@@ -9,6 +9,7 @@
   },
   "author": "Kornel <kornel@geekhood.net>",
   "license": "GPL-3.0+",
+  "repository": "https://github.com/yardstickpics/website",
   "dependencies": {
     "compression": "^1.6.1",
     "denodeify": "^1.2.1",
@@ -17,7 +18,8 @@
     "multer": "^1.1.0",
     "normalizecss": "^3.0.0",
     "nunjucks": "^2.4.1",
-    "sqlite3": "^3.1.2"
+    "sqlite3": "^3.1.2",
+    "yr": "^3.0.0"
   },
   "devDependencies": {
     "mocha": "^2.4.5",
