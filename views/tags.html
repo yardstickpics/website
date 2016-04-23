@@ -12,6 +12,7 @@
 {% endfor %}
 </ul>
 <h2>Image content</h2>
+<p>These tags are from various sources, including AI image recognition.</p>
 <ul class="tags many">
 {% for tag in content_tags %}
 <li><a href="/tags/{{tag.name|urlencode}}">{{tag.name}}<span> × {{tag.num}}</span></a></li>
