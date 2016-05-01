@@ -111,11 +111,13 @@ header .lead {color: #777;}
 
 pre, code {
     font-family: consolas, monospace, serif;
+    font-size: 1em;
 }
 pre {
     white-space: pre-wrap;
     padding: 1em;
     background: #f8f8f8;
+    font-size: 0.95em;
 }
 hr {
     height: 0;
