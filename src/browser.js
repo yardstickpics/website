@@ -2,6 +2,7 @@
 
 const sqlite = require('sqlite3');
 const yr = require('yr');
+const getThumbnailSize = require('./thumb').getThumbnailSize;
 
 function pget(db, query, args) {
     if (!args) args = [];
@@ -35,10 +36,21 @@ Browser.prototype.getAllTags = function() {
 
 Browser.prototype.getTag = function(tag) {
     if (!this.byTagCache.has(tag)) {
-        this.byTagCache.set(tag, this.db.then(db => pget(db, `SELECT sha1,width,height,size,lic FROM images i
+        this.byTagCache.set(tag, this.db.then(db => pget(db, `SELECT sha1,width,height,size,lic,json FROM images i
             JOIN image_tags it ON it.image_id = i.id
             JOIN tags t ON it.tag_id = t.id
-            WHERE t.name = ? ORDER BY coalesce(width*height, size, 99999999)`, [tag]).then(images => {
+            WHERE t.name = ?
+            ORDER BY coalesce(width*height, size, 99999999), width, lic`, [tag]).then(rows => {
+                const images = rows.map(row => {
+                    const img = Object.assign(row, JSON.parse(row.json));
+                    img.size_kb = Math.ceil(img.size/1000);
+
+                    const tmp = getThumbnailSize(img.width, img.height);
+                    img.thumbWidth = tmp[0];
+                    img.thumbHeight = tmp[1];
+                    img.sourceURL = `https://yardstick.pictures/downloads/${img.sha1.substr(0,2)}/${img.sha1.substr(2)}.${img.ext}`;
+                    return img;
+                });
                 return {name:tag, images};
             })));
     }

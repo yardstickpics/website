@@ -5,10 +5,28 @@
 {% endblock %}
 {% block head %}
 <style>
-td {padding-right: 1ex;}
-td.size, td.width, td.height {font-family: helvetica, arial, sans-serif; text-align: right; font-size: 0.9em; vertical-align: bottom;}
+/*td {padding-right: 1ex;}
+td.size, td.width, td.height {text-align: right; vertical-align: bottom;}
 td.width {padding-right: 0}
-td.height {text-align: left}
+td.height {text-align: left}*/
+td.size, td.width, td.height {font-family: helvetica, arial, sans-serif;}
+table { font-size: 0.8em;}
+tbody {
+    display:flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+tr,td,table {
+    display: block; text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+}
+tr {padding: 0 1px 1em}
+td.width, td.height {display: inline-block;}
+.thumb {background:#fcfcff; overflow: hidden; margin: 0 auto;}
+a:hover .thumb {background:#ddf;}
+td > a {display:block; min-height: 22px; text-decoration: none; color: #aac;}
 </style>
 {% endblock %}
 {% block body %}
@@ -16,9 +34,14 @@ td.height {text-align: left}
 <table>
 {% for img in tag.images %}
 <tr><td>
-<a class=sha1 href="/image/{{img.sha1|truncate(6,true,'')|urlencode}}">{{img.sha1|truncate(20,true,'…')}}</a>
+<a href="/image/{{img.sha1|truncate(6,true,'')|urlencode}}">
+<img src="https://img.gs/bqbbkhnnnc/{{img.thumbWidth}}x{{img.thumbHeight}},crop/{{img.sourceURL}}"
+class=thumb width={{img.thumbWidth}} height={{img.thumbHeight}} alt="{{img.ext}}">
+</a>
 <td class=size>
-{{img.size}}
+{% if img.height %}
+{{img.size_kb}}KB
+{% endif %}
 <td class=width>
 {{img.width}}
 <td class=height>
@@ -26,9 +49,7 @@ td.height {text-align: left}
 ×{{img.height}}
 {% endif %}
 <td>
-{% if img.lic != 'pd' and img.lic != 'cc0' %}
 {{img.lic}}
-{% endif %}
 </tr>
 {% endfor %}
 </table>

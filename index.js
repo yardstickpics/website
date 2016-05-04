@@ -7,6 +7,7 @@ if (!dev) {
     process.setuid('www-data');
 }
 
+require('promise.prototype.finally');
 const express = require('express');
 const compress = require('compression');
 const nunjucks = require('nunjucks');
@@ -34,9 +35,10 @@ const browser = new Browser('images.db');
 
 const app = express();
 
-app.use(compress());
-app.use(morgan('combined'));
 app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
+
+app.use(morgan('combined'));
+app.use(compress());
 
 nunjucks.configure('views', {
     autoescape: true,
