@@ -165,6 +165,9 @@ app.get('/contribute', (req, res) => {
     res.render('contribute.html', {licenses: licenseOptions, post:{}});
 });
 
-app.use(express.static('public'));
+app.use(express.static('public', {
+    maxAge: 7*24*3600*1000,
+    redirect: false,
+}));
 
 app.listen(process.env.PORT || 3333);
